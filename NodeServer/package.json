@@ -1,0 +1,44 @@
+{
+  "name": "nodeserver",
+  "version": "1.0.0",
+  "description": "Node server to connect between angular and MongoDB",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \\\"Error: no test specified\\\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thalalhassan/ICT-Project.git"
+  },
+  "keywords": [
+    "webApp",
+    "Angular",
+    "Node",
+    "Express",
+    "MongoDB",
+    "Ecommerce",
+    "Fashion"
+  ],
+  "author": "Thalal Hassan",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "chalk": "^2.4.1",
+    "crypto": "^1.0.1",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "gridfs-stream": "^1.1.1",
+    "method-override": "^3.0.0",
+    "mongoose": "~5.3.1",
+    "multer": "^1.4.2",
+    "multer-gridfs-storage": "^3.3.0",
+    "node-sessionstorage": "^1.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  },
+  "bugs": {
+    "url": "https://github.com/thalalhassan/ICT-Project/issues"
+  },
+  "homepage": "https://github.com/thalalhassan/ICT-Project#readme"
+}
