@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
+import { ServerService } from '../server.service';
 
 @Component({
   selector: 'app-signin',
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class SigninComponent implements OnInit {
 
-  constructor(private authService:AuthService, private router:Router ) { }
+  constructor(private serverService:ServerService, private router:Router ) { }
 
   ngOnInit() {
   }
@@ -17,8 +17,7 @@ export class SigninComponent implements OnInit {
   model: any = {};
 
   onSubmit() {
-    this.authService.signIn(this.model).subscribe( res =>{
-      // alert('Message!! :-)\n\n' +JSON.parse(JSON.stringify(res)).msg)
+    this.serverService.signIn(this.model).subscribe( res =>{
       localStorage.setItem('token',res.token )
       console.log(res.token)
       this.router.navigate(['/'])

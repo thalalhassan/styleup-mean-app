@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 
 //Components
@@ -19,6 +19,8 @@ import { AuthService } from './auth.service';
 import { AuthGuard } from './auth.guard';
 import { ServerService } from './server.service';
 import { TokenInterceptorService } from './token-interceptor.service';
+import { ShopItemComponent } from './shop-item/shop-item.component';
+import { OrderComponent } from './order/order.component';
 
 @NgModule({
   declarations: [
@@ -31,13 +33,16 @@ import { TokenInterceptorService } from './token-interceptor.service';
     ShopcartComponent,
     SigninComponent,
     SignupComponent,
-    AdditemComponent
+    AdditemComponent,
+    ShopItemComponent,
+    OrderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
 
   ],
   providers: [AuthService,AuthGuard,ServerService,{

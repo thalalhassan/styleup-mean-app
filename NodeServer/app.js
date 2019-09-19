@@ -70,7 +70,7 @@ app.post('/signup' ,(req,res) =>{
     });
 });
 
-app.post('/additem',verifyToken,(req,res,err)=>{
+app.post('/additem',verifyToken,(req,res,next)=>{
 
 
 })

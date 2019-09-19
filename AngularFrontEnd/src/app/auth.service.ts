@@ -7,21 +7,22 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
-  private  signinUrl = 'http://localhost:3030/signin';
+  private additemUrl = 'http://localhost:3030/additem';
 
   constructor(private http:HttpClient ,private router:Router) { }
 
-  signIn(user){
-    alert(JSON.stringify(user))
-    return this.http.post<any>(this.signinUrl,{user});
+  
+  addItem(item){
+    alert(JSON.stringify(item));
+    return this.http.post<any>(this.additemUrl,{item});
   }
 
   getToken(){
-    return localStorage.getItem('token')
+    return localStorage.getItem('token');
   }
 
   signedIn(){
-    return !!localStorage.getItem('token')
+    return !!localStorage.getItem('token');
   }
   
 }

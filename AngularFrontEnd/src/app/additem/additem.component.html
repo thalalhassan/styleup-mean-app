@@ -1,84 +1,84 @@
-<!-- 
+
 <div class="card m-3">
         <h5 class="card-header">Angular 8 Reactive Form Validation</h5>
         <div class="card-body">
-            <form (ngSubmit)="onSubmit()">
+            <form [formGroup]="addItem" (ngSubmit)="onSubmit()">
                 <div class="form-row">
                     <div class="form-group col-5">
                         <label>Item Code</label>
-                        <input type="text" formControlName="itemcode" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
-                        <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
-                            <div *ngIf="f.firstName.errors.required">First Name is required</div>
+                        <input type="text" formControlName="itemcode" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.itemcode.errors }" />
+                        <div *ngIf="submitted && f.itemcode.errors" class="invalid-feedback">
+                            <div *ngIf="f.itemcode.errors.required">Item Code is required</div>
                         </div>
                     </div>
                     <div class="form-group col-5">
                             <label>Item Name</label>
-                            <input type="text" formControlName="itemname" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
-                            <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
-                                <div *ngIf="f.firstName.errors.required">First Name is required</div>
+                            <input type="text" formControlName="itemName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.itemName.errors }" />
+                            <div *ngIf="submitted && f.itemName.errors" class="invalid-feedback">
+                                <div *ngIf="f.itemName.errors.required">Item Name is required</div>
                             </div>
                     </div>
                      <div class="form-group col-5">
                         <label>Item Brief</label>
-                        <input type="text" formControlName="itembrief" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
-                        <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
-                            <div *ngIf="f.firstName.errors.required">First Name is required</div>
+                        <input type="text" formControlName="itemBrief" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.itemBrief.errors }" />
+                        <div *ngIf="submitted && f.itemBrief.errors" class="invalid-feedback">
+                            <div *ngIf="f.itemBrief.errors.required">item Brief is required</div>
                         </div>
                     </div>
 
                     <div class="form-group col-5">
                         <label>Item Gender</label>
-                        <select formControlName="gender" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.title.errors }">
+                        <select formControlName="itemGender" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.itemGender.errors }">
                             <option value="men">Mens Clothing</option>
                             <option value="women">Womens Clothing</option>
                             <option value="kids">Kids Clothing</option>
                         </select>
-                         <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
-                            <div *ngIf="f.title.errors.required">Title is required</div>
+                         <div *ngIf="submitted && f.itemGender.errors" class="invalid-feedback">
+                            <div *ngIf="f.itemGender.errors.required">Item Gender is required</div>
                         </div>
                     </div>
                     
                     <div class="form-group col-5">
                         <label>Item Style</label>
-                        <select formControlName="style" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.title.errors }">
+                        <select formControlName="itemStyle" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.itemStyle.errors }">
                                 <option value="shirt">Shirt</option>
                                 <option value="tshirt">T-Shirt</option>
                                 <option value="kurtha">Kurtha</option>
                         </select>
-                         <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
-                            <div *ngIf="f.title.errors.required">Title is required</div>
+                         <div *ngIf="submitted && f.itemStyle.errors" class="invalid-feedback">
+                            <div *ngIf="f.itemStyle.errors.required">Item Style is required</div>
                         </div>
                     </div>
                     <div class="form-group col-5">
                         <label>Item Slevee</label>
-                        <select formControlName="sleeve" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.title.errors }">
+                        <select formControlName="itemSleeve" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.itemSleeve.errors }">
                                 <option value="fsleeve">Full Sleeve</option>
                                 <option value="ssleeve">Short Sleeve</option>
                         </select>
-                        <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
-                                <div *ngIf="f.title.errors.required">Title is required</div>
+                        <div *ngIf="submitted && f.itemSleeve.errors" class="invalid-feedback">
+                                <div *ngIf="f.itemSleeve.errors.required">Item Sleeve is required</div>
                         </div>
                     </div>
                     <div class="form-group col-5">
                             <label>Item Size</label>
-                            <input type="text" formControlName="itemcode" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
-                            <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
-                                <div *ngIf="f.firstName.errors.required">First Name is required</div>
+                            <input type="text" formControlName="itemSize" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.itemSize.errors }" />
+                            <div *ngIf="submitted && f.itemSize.errors" class="invalid-feedback">
+                                <div *ngIf="f.itemSize.errors.required">Item Size is required</div>
                             </div>
                     </div>
 
                     <div class="form-group col-5">
                             <label>Item Price</label>
-                            <input type="text" formControlName="itemcode" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
-                            <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
-                                <div *ngIf="f.firstName.errors.required">First Name is required</div>
+                            <input type="text" formControlName="itemPrice" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.itemPrice.errors }" />
+                            <div *ngIf="submitted && f.itemPrice.errors" class="invalid-feedback">
+                                <div *ngIf="f.itemPrice.errors.required">Item Price is required</div>
                             </div>
                     </div>
                     <div class="form-group col-5">
                             <label>Item Image</label>
-                            <input type="file" formControlName="itemcode" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
-                            <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
-                                <div *ngIf="f.firstName.errors.required">First Name is required</div>
+                            <input type="file" formControlName="itemImage" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.itemImage.errors }" />
+                            <div *ngIf="submitted && f.itemImage.errors" class="invalid-feedback">
+                                <div *ngIf="f.itemImage.errors.required">Item Image is required</div>
                             </div>
                     </div>
                 </div>
@@ -89,9 +89,9 @@
                     <div *ngIf="submitted && f.acceptTerms.errors" class="invalid-feedback">Accept Ts & Cs is required</div>
                 </div>
                 <div class="text-center">
-                    <button class="btn btn-primary mr-1">Register</button>
+                    <button class="btn btn-primary mr-1">Add Item</button>
                     <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
                 </div>
             </form>
         </div>
-    </div> -->
+    </div>
