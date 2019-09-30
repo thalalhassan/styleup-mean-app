@@ -1,30 +1,33 @@
 
-<div class="card m-3">
-    <h5 class="card-header">Admin SignIn </h5>
-    <div class="card-body">
-        <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm"  > <!--novalidate-->
-            <div class="form-row">
-                <div class="form-group">
-                    <label>Admin Name</label>
-                    <input type="text" name="adminName" class="form-control" [(ngModel)]="admin.adminName" #adminName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && adminName.invalid }" required>
-                    <div *ngIf="f.submitted && adminName.invalid" class="invalid-feedback">
-                        <div *ngIf="adminName.errors.required">Admin Name is required</div>
+<div class="card m-5 p-5 text-center border-0">
+        <h5  >
+            <img class="mb-4" src="https://image.winudf.com/v2/image/Y29tLm9iYWFzZW1hLnN0eWxldXBfaWNvbl8wX2I2ODQ3Yjgw/icon.png?w=170&fakeurl=1" alt="" width="72" height="72"><br>
+            SignIn <br> 
+        </h5>
+        <div *ngIf="errorMessage" class="alert alert-danger" > Error in SignIn Details</div>    
+        <div class="card-body">
+            <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm"  > <!-- [mustMatch]="['password', 'confirmPassword']" novalidate-->
+                    <div class="form-group ">
+                        <input type="text" name="userName" placeholder="username" class="form-control" [(ngModel)]="admin.adminName" #adminName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && adminName.invalid }" required>
+                        <div *ngIf="f.submitted && adminName.invalid" class="invalid-feedback">
+                            <div *ngIf="adminName.errors.required">Admin Name Required</div>
+                        </div>
                     </div>
+                    <div class="form-group">
+                        <input type="password" name="password" placeholder="password" class="form-control " [(ngModel)]="admin.password" #password="ngModel" [ngClass]="{ 'is-invalid': f.submitted && password.invalid }" required minlength="6">
+                        <div *ngIf="f.submitted && password.invalid" class="invalid-feedback">
+                            <div *ngIf="password.errors.required">Password is required</div>
+                            <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
+                        </div>
+                    </div>
+                <div class="text-center">
+                    <button class="btn btn-primary mr-1">SignIn</button>
+                    <button class="btn btn-secondary" type="reset">Cancel</button>
                 </div>
-
-                <div class="form-group ">
-                    <label>Password</label>
-                    <input type="password" name="password" class="form-control" [(ngModel)]="admin.password" #password="ngModel" [ngClass]="{ 'is-invalid': f.submitted && password.invalid }" required minlength="8">
-                    <div *ngIf="f.submitted && password.invalid" class="invalid-feedback">
-                        <div *ngIf="password.errors.required">Password is required</div>
-                        <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
-                    </div>
-                </div>form
-            </div>
-            <div class="text-center">
-                <button class="btn btn-primary mr-1">SignIn</button>
-                <button class="btn btn-secondary" type="reset">Cancel</button>
-            </div>
-        </form>
+                <p class="mt-2 mb-5 text-muted">Not Registered <a routerLink="/signup">SignUp</a></p>
+              
+    
+            </form>
+        </div>
     </div>
-</div>
+    

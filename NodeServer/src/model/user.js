@@ -1,5 +1,7 @@
 const mongoose= require('mongoose');
-mongoose.connect('mongodb+srv://thalalhassan:thalalhassan@webapp-a2odf.mongodb.net/StyleUp?retryWrites=true&w=majority')
+mongoose.connect('mongodb+srv://thalalhassan:thalalhassan@webapp-a2odf.mongodb.net/StyleUp?retryWrites=true&w=majority', { useNewUrlParser: true } )
+// mongoose.connect('mongodb://localhost:27017/StyleUp');
+
 const Schema = mongoose.Schema;
 
 var user = new Schema({

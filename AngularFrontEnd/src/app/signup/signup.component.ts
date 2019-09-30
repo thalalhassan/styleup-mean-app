@@ -9,22 +9,31 @@ import { Router } from '@angular/router';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
+  
+  user: any = {};
+  errorMessage:boolean=false;
 
-  constructor(public serverService:ServerService , private router:Router) { }
+  constructor(public serverService:ServerService , private router:Router) {
+    if(!!localStorage.getItem('userToken')){
+      this.router.navigate(['/'])
+    }
+   }
 
   ngOnInit() {
   }
 
-  model: any = {};
 
   onSubmit() {
-    this.serverService.signUp(this.model).subscribe(data=>{
-
-      console.log('Message!! '+JSON.parse(JSON.stringify(data)))
+    this.serverService.signUp(this.user).subscribe(data=>{
+     console.log('Message!! '+JSON.parse(JSON.stringify(data)).msg)
       this.router.navigate(['/signin'])
+    },
+    err =>{
+      this.errorMessage=true;
+      console.log(err)
     })
 
-    // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.model, null, 4));
+    // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.user, null, 4));
   }
 
 }

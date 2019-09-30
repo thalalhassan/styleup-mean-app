@@ -1,0 +1,31 @@
+nav{
+    padding-left: 10%;
+    padding-right: 10%;
+}
+/* change the background color */
+.navbar-custom {
+    background-color: #ffffff;
+}
+/* change the brand and text color */
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+    color: rgba(17, 16, 16, 0.8);
+}
+/* change the link color */
+.navbar-custom .navbar-nav .nav-link {
+    color: rgba(0, 0, 0, 0.5);
+}
+/* change the color of active or hovered links */
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:focus .nav-link,
+.navbar-custom .nav-item:hover .nav-link {
+    color: rgba(6, 35, 42, 0.5);
+}
+
+.badge {
+  border-radius: 100%;
+}
+#lblCartCount {
+    background: #950707a8;
+    color: #fff;
+}

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ServerService } from '../server.service';
 import { Router } from '@angular/router';
+import { InteractionService } from '../interaction.service';
 
 @Component({
   selector: 'app-admin',
@@ -8,8 +9,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
-
-  constructor(private serverService : ServerService ,private router:Router ) { }
+  submitted = false;
+  errorMessage=false;
+  constructor(private serverService : ServerService ,private router:Router ,private interactionService:InteractionService) { }
 
   admin : any={
     adminName : 'admin',  
@@ -19,14 +21,17 @@ export class AdminComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmit() {
+  onSubmit(){
+    this.submitted = true;
     this.serverService.admin(this.admin).subscribe( res =>{
-      localStorage.setItem('token',res.token )
-      console.log(res.token)
-      this.router.navigate(['/dashboard'])
+      localStorage.setItem('adminToken',res.token )
+      this.interactionService.isAdminLogIn.next(true);
+      this.interactionService.isUserLoggedIn.next(false);
+      this.router.navigate(['/additem'])
 
     },
     err =>{
+      this.errorMessage=true;
       console.log(err)
     })
 

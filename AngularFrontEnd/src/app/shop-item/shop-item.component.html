@@ -1,1 +1,39 @@
-<p>shop-item works!</p>
+<hr><h1 class="text-center">{{item.itemBrand}} {{item.itemGender}}'s {{item.itemStyle}}</h1><hr>
+<div class="container-fluid">
+        <div class="col-sm-6 mx-auto " >
+                <div class="card mb-2 mx-auto">
+                    <img src="{{item.itemImage}}"class="card-img-top" alt="..." >
+                
+                <div *ngIf="selectSize"  class="float pl-3">
+                    <ul class="select-size ">         
+                      <li>
+                        <input type="radio" id="sizeS" name="amount" (change)="selectedSize('s',item)"/>
+                        <label for="sizeS">S</label>
+                      </li>
+                      <li>
+                        <input type="radio" id="sizeM" name="amount" (change)="selectedSize('m',item)" />
+                        <label for="sizeM">M</label>
+                      </li>
+                      <li>
+                        <input type="radio" id="sizeL" name="amount" (change)="selectedSize('l',item)"/>
+                        <label for="sizeL"> L </label>
+                      </li>
+                      <li>
+                        <input type="radio" id="sizeXL" name="amount"(change)="selectedSize('xl',item)" />
+                        <label for="sizeXL">XL</label>
+                      </li>
+                    </ul>
+                    <button class="btn btn-primary mt-3 ml-3" (click)="addToCart(item)">{{mode}}</button>
+                    <button class="btn btn-secondary mt-3 ml-1" (click)="cancel()">Cancel</button>
+              </div> 
+              <div *ngIf="!selectSize" class="card-body">
+                    <h5 class="card-title">{{item.itemBrand}}</h5>
+                    <p class="card-text m-1 text-uppercase">{{item.itemColour}} coloured {{item.itemGender}}'s {{item.itemStyle}}</p>
+                    <p class="card-text m-1">Rs.{{item.itemPrice}}</p>
+                    <button class="btn btn-primary mr-1" (click)="addToCart(item)">Add to cart</button>
+                    <button class="btn btn-primary " (click)="buyItem()">Buy</button>
+                    </div>
+                </div>
+        </div>
+</div>
+

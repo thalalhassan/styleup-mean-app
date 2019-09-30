@@ -1,1 +1,40 @@
-<p>shopcart works!</p>
+<div class="card">
+    <div class="card-header">
+     <h3 class="text-center">My Cart</h3>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table" *ngIf='items && cartLength'>
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Size</th>
+              <th>Quantity</th>
+              <th>Price</th>
+              <th>Total</th>
+              <th>Action</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor='let item of items'>
+              <td><a routerLink="/shopitem" (click)="viewItem()"><img [src]="item.itemImage" [title]="item.itemName" alt="" height="200px" width="150px"></a></td>
+              <td class="mt-5 text-uppercase">{{ item.itemSize}}</td>
+              <td>{{ item.quantity}}</td>
+              <td>{{ item.itemPrice | currency :'INR' : symbol :'2.2-2'}}</td>
+              <td>{{ item.itemPrice * item.quantity | currency :'INR' : symbol :'2.2-2'}}</td>
+              <td>
+                <input type="button" class="btn btn-success " (click)="checkOut(item)" value="Buy">
+                <input type="button" class="btn btn-danger ml-1" *ngIf="item.quantity>1" (click)="removeCartItem(item)" value="Remove One">
+                <input type="button" class="btn btn-danger ml-1" *ngIf="item.quantity==1" (click)="removeCartItem(item)" value="Delete">
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="text-center my-5" *ngIf='!cartLength'>
+          <h1 class="text-muted"> OOPS! your cart is empty</h1>
+          <p class="text-muted"> please add some items to your cart</p>
+        </div>
+      </div>
+    </div>
+</div>

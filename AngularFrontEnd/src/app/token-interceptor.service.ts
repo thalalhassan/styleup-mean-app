@@ -1,6 +1,7 @@
 import { Injectable ,Injector } from '@angular/core';
-import { AuthService } from './auth.service';
 import { HttpInterceptor } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { SharedService } from './shared.service';
 
 
 @Injectable({
@@ -8,12 +9,15 @@ import { HttpInterceptor } from '@angular/common/http';
 })
 export class TokenInterceptorService implements HttpInterceptor{
 
-  constructor( private injector : Injector) { }
+
+  constructor( private injector : Injector ,private router : Router) { }
 
   intercept(req,next){
-    let authService =this.injector.get(AuthService)
+    let sharedService =this.injector.get(SharedService);
+
     let tokenizedReq = req.clone({
-      headers:req.headers.set('Authorization' , 'bearer ' +authService.getToken())
+      adminToken:req.headers.set('Authorization' , 'bearer ' +sharedService.getToken().adminToken),
+      userToken:req.headers.set('Authorization' , 'bearer ' +sharedService.getToken().userToken),
     })
     return next.handle(tokenizedReq)
   }

@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
 
 //Components
 import { AppRoutingModule } from './app-routing.module';
@@ -15,12 +17,10 @@ import { ShopcartComponent } from './shopcart/shopcart.component';
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
 import { AdditemComponent } from './additem/additem.component';
-import { AuthService } from './auth.service';
 import { AuthGuard } from './auth.guard';
 import { ServerService } from './server.service';
 import { TokenInterceptorService } from './token-interceptor.service';
 import { ShopItemComponent } from './shop-item/shop-item.component';
-import { OrderComponent } from './order/order.component';
 
 @NgModule({
   declarations: [
@@ -35,9 +35,9 @@ import { OrderComponent } from './order/order.component';
     SignupComponent,
     AdditemComponent,
     ShopItemComponent,
-    OrderComponent
   ],
   imports: [
+    Ng2SearchPipeModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
@@ -45,7 +45,7 @@ import { OrderComponent } from './order/order.component';
     ReactiveFormsModule,
 
   ],
-  providers: [AuthService,AuthGuard,ServerService,{
+  providers: [AuthGuard,ServerService,{
     provide:HTTP_INTERCEPTORS,
     useClass:TokenInterceptorService,
     multi:true

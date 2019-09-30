@@ -1,30 +1,30 @@
 
-<div class="card m-3">
-    <h5 class="card-header">SignIn </h5>
-    <div class="card-body">
+<div class="container-fluid text-center ">
+    <h5  >
+        <img class="mb-4" src="https://image.winudf.com/v2/image/Y29tLm9iYWFzZW1hLnN0eWxldXBfaWNvbl8wX2I2ODQ3Yjgw/icon.png?w=170&fakeurl=1" alt="" width="72" height="72" style="border-radius: 5px;"><br>
+        SignIn <br> 
+    </h5>
+    <div *ngIf="errorMessage" class="alert alert-danger" > Error in LogIn Details</div>
+    <div class="container-fluid mx-auto">
         <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm"  > <!-- [mustMatch]="['password', 'confirmPassword']" novalidate-->
-            <div class="form-row">
-                <div class="form-group">
-                    <label>User Name</label>
-                    <input type="text" name="userName" class="form-control" [(ngModel)]="model.userName" #userName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && userName.invalid }" required>
+                <div class="form-group ">
+                    <input type="text" name="userName" placeholder="username" class="form-control" [(ngModel)]="user.userName" #userName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && userName.invalid }" required>
                     <div *ngIf="f.submitted && userName.invalid" class="invalid-feedback">
                         <div *ngIf="userName.errors.required">User Name is required</div>
                     </div>
                 </div>
-
-                <div class="form-group ">
-                    <label>Password</label>
-                    <input type="password" name="password" class="form-control" [(ngModel)]="model.password" #password="ngModel" [ngClass]="{ 'is-invalid': f.submitted && password.invalid }" required minlength="6">
+                <div class="form-group">
+                    <input type="password" name="password" placeholder="password" class="form-control " [(ngModel)]="user.password" #password="ngModel" [ngClass]="{ 'is-invalid': f.submitted && password.invalid }" required minlength="6">
                     <div *ngIf="f.submitted && password.invalid" class="invalid-feedback">
                         <div *ngIf="password.errors.required">Password is required</div>
                         <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
                     </div>
                 </div>
-            </div>
             <div class="text-center">
                 <button class="btn btn-primary mr-1">SignIn</button>
                 <button class="btn btn-secondary" type="reset">Cancel</button>
             </div>
+            <p class="mt-2 mb-5 text-muted">Not Registered <a routerLink="/signup">SignUp</a></p>
         </form>
     </div>
 </div>

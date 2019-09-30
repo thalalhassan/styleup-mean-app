@@ -1,34 +1,31 @@
-
-<div class="card m-3">
-        <h5 class="card-header">Angular 8 Reactive Form Validation</h5>
+<!-- Reactive Form -->
+<hr>
+<h1 class="text-center" id="addItem">{{add_edit}} Item</h1>
+<hr>
+<div class="card m-3" >
+        <h5 class="card-header">{{add_edit}} Item</h5>
         <div class="card-body">
             <form [formGroup]="addItem" (ngSubmit)="onSubmit()">
                 <div class="form-row">
-                    <div class="form-group col-5">
+                    <div class="form-group col-6">
                         <label>Item Code</label>
-                        <input type="text" formControlName="itemcode" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.itemcode.errors }" />
-                        <div *ngIf="submitted && f.itemcode.errors" class="invalid-feedback">
-                            <div *ngIf="f.itemcode.errors.required">Item Code is required</div>
+                        <input type="text" formControlName="itemCode" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.itemCode.errors }" />
+                        <div *ngIf="submitted && f.itemCode.errors" class="invalid-feedback">
+                            <div *ngIf="f.itemCode.errors.required">Item Code is required</div>
                         </div>
                     </div>
-                    <div class="form-group col-5">
-                            <label>Item Name</label>
-                            <input type="text" formControlName="itemName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.itemName.errors }" />
-                            <div *ngIf="submitted && f.itemName.errors" class="invalid-feedback">
-                                <div *ngIf="f.itemName.errors.required">Item Name is required</div>
+                    <div class="form-group col-6">
+                            <label>Item Brand</label>
+                            <input type="text" formControlName="itemBrand" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.itemBrand.errors }" />
+                            <div *ngIf="submitted && f.itemBrand.errors" class="invalid-feedback">
+                                <div *ngIf="f.itemBrand.errors.required">Item Brand is required</div>
+                                <div *ngIf="f.itemBrand.errors.pattern">Item Brand Should be in Alphabet</div>
                             </div>
                     </div>
-                     <div class="form-group col-5">
-                        <label>Item Brief</label>
-                        <input type="text" formControlName="itemBrief" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.itemBrief.errors }" />
-                        <div *ngIf="submitted && f.itemBrief.errors" class="invalid-feedback">
-                            <div *ngIf="f.itemBrief.errors.required">item Brief is required</div>
-                        </div>
-                    </div>
 
-                    <div class="form-group col-5">
+                    <div class="form-group col-6">
                         <label>Item Gender</label>
-                        <select formControlName="itemGender" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.itemGender.errors }">
+                        <select formControlName="itemGender" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.itemGender.errors }" >
                             <option value="men">Mens Clothing</option>
                             <option value="women">Womens Clothing</option>
                             <option value="kids">Kids Clothing</option>
@@ -38,7 +35,7 @@
                         </div>
                     </div>
                     
-                    <div class="form-group col-5">
+                    <div class="form-group col-6">
                         <label>Item Style</label>
                         <select formControlName="itemStyle" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.itemStyle.errors }">
                                 <option value="shirt">Shirt</option>
@@ -49,7 +46,7 @@
                             <div *ngIf="f.itemStyle.errors.required">Item Style is required</div>
                         </div>
                     </div>
-                    <div class="form-group col-5">
+                    <div class="form-group col-6">
                         <label>Item Slevee</label>
                         <select formControlName="itemSleeve" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.itemSleeve.errors }">
                                 <option value="fsleeve">Full Sleeve</option>
@@ -59,39 +56,112 @@
                                 <div *ngIf="f.itemSleeve.errors.required">Item Sleeve is required</div>
                         </div>
                     </div>
-                    <div class="form-group col-5">
-                            <label>Item Size</label>
-                            <input type="text" formControlName="itemSize" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.itemSize.errors }" />
-                            <div *ngIf="submitted && f.itemSize.errors" class="invalid-feedback">
-                                <div *ngIf="f.itemSize.errors.required">Item Size is required</div>
-                            </div>
+                    <div class="form-group col-6">
+                        <label>Item Colour</label>
+                        <input type="text" formControlName="itemColour" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.itemColour.errors }">
+                        <div *ngIf="submitted && f.itemColour.errors" class="invalid-feedback">
+                                <div *ngIf="f.itemColour.errors.required">Item Colour is required</div>
+                                <div *ngIf="f.itemColour.errors.pattern">Item Colour Should be in Alphabet</div>
+
+                        </div>
                     </div>
 
-                    <div class="form-group col-5">
+                    <div class="form-group col"> Item Quantity <span class="text-muted">(Please enter the Quantity of items available for each size)</span></div>
+
+                    <div formGroupName="itemSize" class="form-row" style="width:100%;">
+                            <div class="form-group col-3">
+                                Size S :<input type="number" formControlName="s"  class="form-control" min="0" max="10"  [ngClass]="{ 'is-invalid': submitted && f2.s.errors }" />
+                                <div *ngIf="submitted && f2.s.errors" class="invalid-feedback">
+                                    <div *ngIf="f2.s.errors.required">Size is required</div>
+                                    <div *ngIf="f2.s.errors.required">Size Range [0-20]</div>
+                                </div>
+                            </div>
+                            <div class="form-group col-3">
+                                Size M :<input type="number" formControlName="m"  class="form-control"  min="0" max="10"[ngClass]="{ 'is-invalid': submitted && f2.m.errors }" />
+                                <div *ngIf="submitted && f2.m.errors" class="invalid-feedback">
+                                    <div *ngIf="f2.m.errors.required">Size is required</div>
+                                    <div *ngIf="f2.m.errors.required">Size Range [0-20]</div>
+                                </div>
+                            </div>
+                            <div class="form-group col-3 ">
+                                Size L :<input type="number" formControlName="l" class="form-control"   min="0" max="10"[ngClass]="{ 'is-invalid': submitted && f2.l.errors }" />
+                                <div *ngIf="submitted && f2.l.errors" class="invalid-feedback">
+                                    <div *ngIf="f2.l.errors.required">Size is required</div>
+                                    <div *ngIf="f2.l.errors.required">Size Range [0-20]</div>
+                                </div>
+                            </div>
+                            <div class="form-group col-3">
+                                Size XL :<input type="number" formControlName="xl" class="form-control"   min="0" max="10"[ngClass]="{ 'is-invalid': submitted && f2.xl.errors }" />
+                                <div *ngIf="submitted && f2.xl.errors" class="invalid-feedback">
+                                    <div *ngIf="f2.xl.errors.required">Size is required</div>
+                                    <div *ngIf="f2.xl.errors.required">Size Range [0-20]</div>
+                                </div>
+                            </div>
+                                                       
+                    </div>
+
+                    <div class="form-group col-6">
                             <label>Item Price</label>
+                            <!-- <input type="number" min="0.00" max="10000.00" step="0.01" /> -->
+
                             <input type="text" formControlName="itemPrice" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.itemPrice.errors }" />
                             <div *ngIf="submitted && f.itemPrice.errors" class="invalid-feedback">
-                                <div *ngIf="f.itemPrice.errors.required">Item Price is required</div>
+                                    <div *ngIf="f.itemPrice.errors.required">Item Price is required</div>
+                                    <div *ngIf="f2.m.errors.required">Item Price Should be numbers</div>
+                                    <div *ngIf="f2.m.errors.required">Price Range [1-50000]</div>
                             </div>
                     </div>
-                    <div class="form-group col-5">
-                            <label>Item Image</label>
-                            <input type="file" formControlName="itemImage" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.itemImage.errors }" />
+                    <div class="form-group col-6">
+                            <label>Item Image Url</label>
+                            <input type="text" formControlName="itemImage" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.itemImage.errors }" />
                             <div *ngIf="submitted && f.itemImage.errors" class="invalid-feedback">
                                 <div *ngIf="f.itemImage.errors.required">Item Image is required</div>
                             </div>
                     </div>
                 </div>
                 
-                <div class="form-group form-check">
+                <!-- <div class="form-group form-check">
                     <input type="checkbox" formControlName="acceptTerms" id="acceptTerms" class="form-check-input" [ngClass]="{ 'is-invalid': submitted && f.acceptTerms.errors }" />
                     <label for="acceptTerms" class="form-check-label">Accept Terms & Conditions</label>
                     <div *ngIf="submitted && f.acceptTerms.errors" class="invalid-feedback">Accept Ts & Cs is required</div>
-                </div>
+                </div> -->
                 <div class="text-center">
-                    <button class="btn btn-primary mr-1">Add Item</button>
+                    <button class="btn btn-primary mr-1" >{{add_edit}} Item</button>
                     <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
                 </div>
             </form>
         </div>
     </div>
+
+<section id="products">
+    <hr>
+    <h1 class="text-center">Your Products</h1>
+    <hr>
+    <input class="form-control mx-auto" style="width:50%"   placeholder="Search for your product" type="search" [(ngModel)]="item">
+    <div class="card m-3">
+        <div class="row">
+            <div class="col col-md-3 col-lg-2 " style="min-width: 19rem;" *ngFor="let item of items | filter:item">
+                <div class="card-body" >
+                    <img src="{{item.itemImage}}" height="300px" class="card-img-top" alt="...">
+                    <div class="card-body">
+                    <h5 class="card-title">{{item.itemBrand}}</h5>
+                    <p class="card-text m-1">{{item.itemGender}}'s {{item.itemStyle}}</p>
+                    <p class="card-text m-1">Rs.{{item.itemPrice}}</p>
+                    <button class="btn btn-primary mr-1" (click)="onEdit(item)">Edit</button>
+                    <button class="btn btn-primary" (click)="onDelete(item._id)">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Since you didn't really provide a StackBlitz and I'm not having the time to create a whole Form Stackblitz for you, here's what I suggest you do:
+
+In your CreateFormComponent, when in the ngOnInit(), initialize a ReactiveForm, either using a FormBuilder, or by manually creating one using FormGroup and FormControls.
+
+Also inject ActivatedRoute in this component and subscribe to activatedRouterInstance's params BehaviorSubject. If there's any id coming in from there, get the details of the item by that id and populate the form that you creted by calling setValue or patchValue on it.
+
+In case of Create, since there won't be any id in the params, the user will only see an empty form. But in case of edit, since the value of the form would be achieved, the user will see the form filled with the achieved data.
+
+Hope that makes some sense and helps you out. -->

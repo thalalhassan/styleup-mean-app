@@ -1,0 +1,14 @@
+footer{
+    text-align: center;
+    background-color:rgb(246, 241, 241);
+    color: black;
+    position: relative;
+    bottom: 0;
+}
+a{
+    text-decoration: none !important;
+    color:black;
+}
+socialmedia{
+    margin:auto;
+}
